@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal|center_vertical"
+    android:orientation="vertical"
+    tools:context=".Home">
+    <Button
+        android:id="@+id/addproductbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Product"
+        android:textColor="#035EEE"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_rounded"
+        android:textStyle="bold" />
+    <Button
+        android:id="@+id/showproductbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show Product"
+        android:textColor="#035EEE"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_rounded"
+        android:textStyle="bold" />
+    <Button
+        android:id="@+id/homebutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        android:textColor="#035EEE"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_rounded"
+        android:textStyle="bold" />
+    <Button
+        android:id="@+id/searchbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search"
+        android:textColor="#035EEE"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_rounded"
+        android:textStyle="bold" />
+</LinearLayout>
