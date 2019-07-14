@@ -85,44 +85,37 @@ public class addproduct extends AppCompatActivity {
         availblebutton=(Button) findViewById(R.id.availablebutton);
         expirytext=(TextView) findViewById(R.id.expirytext);
         expirybutton=(Button) findViewById(R.id.expirybutton);
+        final DatePickerDialog.OnDateSetListener date2 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                view.setMinDate(System.currentTimeMillis() - 1000);
+                availableDate=year+"-"+(monthOfYear+1)+"-"+dayOfMonth;
+                availabletext.setText(availableDate);
+            }
+        };
         availblebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                c=Calendar.getInstance();
-                int day=c.get(Calendar.DAY_OF_MONTH);
-                int month=c.get(Calendar.MONTH);
-                int year=c.get(Calendar.YEAR);
-
-                dpd=new DatePickerDialog(addproduct.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker datePicker, int nYear, int nMonth, int nDay   ) {
-                       // availableDate=nDay+"/"+(nMonth+1)+"/"+nYear;
-                        availableDate=nYear+"-"+(nMonth+1)+"-"+nDay;
-                        availabletext.setText(availableDate);
-                    }
-                },day,month,year);
-                dpd.show();
+                DatePickerDialog mDate = new DatePickerDialog(addproduct.this, date2, 2016, 2, 24);
+                mDate.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                mDate.show();
             }
         });
-
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                view.setMinDate(System.currentTimeMillis() - 1000);
+                expiryDate=year+"-"+(monthOfYear+1)+"-"+dayOfMonth;
+                expirytext.setText(expiryDate);
+            }
+        };
         expirybutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                c=Calendar.getInstance();
-                int day=c.get(Calendar.DAY_OF_MONTH);
-                int month=c.get(Calendar.MONTH);
-                int year=c.get(Calendar.YEAR);
 
-                dpd=new DatePickerDialog(addproduct.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker datePicker, int nYear, int nMonth, int nDay   ) {
-                        //expiryDate=nDay+"/"+(nMonth+1)+"/"+nYear;
-                        expiryDate=nYear+"-"+(nMonth+1)+"-"+nDay;
-                        expirytext.setText(expiryDate);
-                    }
-                },day,month,year);
-                dpd.show();
+                DatePickerDialog mDate = new DatePickerDialog(addproduct.this, date, 2016, 2, 24);
+                mDate.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                mDate.show();
             }
         });
 
