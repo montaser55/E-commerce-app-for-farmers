@@ -23,11 +23,11 @@ public class SharedPrefManager {
         return mInstance;
     }
 
-    public boolean userLogin(int id, String username, String phoneno){
+    public boolean userLogin(String id, String username, String phoneno){
         SharedPreferences sharedPreferences =mctx.getSharedPreferences(SHARED_PREF_NAME,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor= sharedPreferences.edit();
 
-        editor.putInt(KEY_ID, id);
+        editor.putString(KEY_ID, id);
         editor.putString(KEY_NAME, username);
         editor.putString(KEY_PHONENO,phoneno);
 
