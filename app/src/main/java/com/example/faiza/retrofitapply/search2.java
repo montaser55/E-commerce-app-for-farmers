@@ -41,7 +41,9 @@ public class search2 extends AppCompatActivity {
         mysearchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                recyclerView.setAdapter(null);
                 getProducts(query);
+
                 return false;
             }
 
@@ -92,7 +94,7 @@ public class search2 extends AppCompatActivity {
 
 
 
-                            //setting adapter to recyclerview
+
                             recyclerView.setAdapter(adapter);
 
                             //Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();

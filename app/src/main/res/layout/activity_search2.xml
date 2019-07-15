@@ -12,6 +12,7 @@
         android:id="@+id/searchview"></android.support.v7.widget.SearchView>
     
     <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/searchview"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
