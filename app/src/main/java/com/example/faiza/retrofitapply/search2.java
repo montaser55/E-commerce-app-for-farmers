@@ -61,7 +61,7 @@ public class search2 extends AppCompatActivity {
 
     private void getProducts(final String key){
         String urlString=Api.BASE_URL+"search_ad";
-        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 urlString,
                 new Response.Listener<String>() {
                     @Override
