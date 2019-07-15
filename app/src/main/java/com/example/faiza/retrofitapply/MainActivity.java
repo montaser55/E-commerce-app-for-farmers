@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     Button nextActivity,register;
     private EditText editText_mobnum,editText_password;
-    String mobnum,password;
+    static String mobnum,password;
 
     private ProgressDialog progressDialog;
     Api api;
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.show();
         System.out.println(mobnum+" "+password);
         String urlString=Api.BASE_URL+"login_verify";
-        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 urlString,
                 new Response.Listener<String>() {
                     @Override
@@ -204,6 +204,15 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent=new Intent(this, showproduct.class);
         startActivity(intent);
+    }
+
+    public static String getpassword()
+    {
+        return password;
+    }
+    public static String getphnnum()
+    {
+        return mobnum;
     }
 
 }

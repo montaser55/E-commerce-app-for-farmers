@@ -62,7 +62,7 @@ Button addproduct,home,showproduct,searchbutton;
 
     public void openUserActivity(){
 
-        Intent intent=new Intent(this, UserActivity.class);
+        Intent intent=new Intent(this, navigationtab.class);
         startActivity(intent);
     }
 
