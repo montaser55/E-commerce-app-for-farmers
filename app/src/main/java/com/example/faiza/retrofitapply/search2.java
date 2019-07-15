@@ -61,12 +61,14 @@ public class search2 extends AppCompatActivity {
 
     private void getProducts(final String key){
         String urlString=Api.BASE_URL+"search_ad";
-        StringRequest stringRequest = new StringRequest(Request.Method.GET,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 urlString,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         System.out.println(response);
+                        System.out.println(key);
+                        productList.clear();
 
                         try {
                             JSONArray jsonArray=new JSONArray(response);
@@ -121,7 +123,7 @@ public class search2 extends AppCompatActivity {
         };
 
 
-        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+        RequestHandler.getInstance(search2.this).addToRequestQueue(stringRequest);
 
 
     }
