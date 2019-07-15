@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.show();
         System.out.println(mobnum+" "+password);
         String urlString=Api.BASE_URL+"login_verify";
-        StringRequest stringRequest = new StringRequest(Request.Method.GET,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 urlString,
                 new Response.Listener<String>() {
                     @Override
