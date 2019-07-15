@@ -97,10 +97,14 @@ public class navigationtab extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.editprofile) {
-
+            Intent intent=new Intent(this, passwordChange.class);
+            startActivity(intent);
         } else if (id == R.id.phn) {
+            Intent intent=new Intent(this, phnnumchange.class);
+            startActivity(intent);
 
         } else if (id == R.id.location) {
+
 
         } else if (id == R.id.history) {
 
