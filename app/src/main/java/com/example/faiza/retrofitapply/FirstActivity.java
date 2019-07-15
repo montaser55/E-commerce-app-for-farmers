@@ -51,6 +51,12 @@ public class FirstActivity extends AppCompatActivity {
                 opensearchActivity();
             }
         });
+        agrotravel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openLocationActivity();
+            }
+        });
     }
 
 
@@ -86,6 +92,10 @@ public class FirstActivity extends AppCompatActivity {
     public void openShowProductActivity(){
 
         Intent intent=new Intent(this, showproduct.class);
+        startActivity(intent);
+    }
+    public void openLocationActivity(){
+        Intent intent=new Intent(this, CurrentLocationActivity.class);
         startActivity(intent);
     }
 }
