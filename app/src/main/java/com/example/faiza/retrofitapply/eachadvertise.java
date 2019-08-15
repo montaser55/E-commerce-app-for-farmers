@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +20,7 @@ public class eachadvertise extends AppCompatActivity {
     private final String CANCELABLE_REQUEST_TAG = "volleyImageRequest";
     TextView titleTextview,unitcostTextview,amountTextview,descriptionTextview,availabledateTextview,expirydateTextview,divisionTextview,districtTextview;
     ImageView imgRes;
+    Button addtocart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +35,7 @@ public class eachadvertise extends AppCompatActivity {
         divisionTextview=findViewById(R.id.divisionvalue);
         districtTextview=findViewById(R.id.districtvalue);
         imgRes=findViewById(R.id.productimage);
+        addtocart=findViewById(R.id.addcartbtn);
 
         Intent i = getIntent();
         product = (Product) i.getSerializableExtra("productObject");
@@ -68,6 +72,13 @@ public class eachadvertise extends AppCompatActivity {
        // imgRes.setImageResource(R.drawable.userpic);
 
 
-
+        addtocart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(eachadvertise.this, addtocart.class);
+                intent.putExtra("productObject", product);
+                eachadvertise.this.startActivity(intent);
+            }
+        });
     }
 }

@@ -1,14 +1,22 @@
 package com.example.faiza.retrofitapply;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.provider.MediaStore;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.view.View;
@@ -42,10 +50,13 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class addproduct extends AppCompatActivity {
+public class addproduct extends AppCompatActivity implements LocationListener {
     Spinner spinner;
+    double lati=0,longi=0;
+    String userid;
     AutoCompleteTextView actv;
     AutoCompleteTextView actv2;
+    private ProgressDialog progressDialog;
     String  title,description,unitCost,totalAmount,division, district,upzila,union,availableDate,expiryDate;
     Button choosebtn,expirybutton,availblebutton,addproductbutton;
     TextView availabletext,expirytext;
@@ -56,6 +67,7 @@ public class addproduct extends AppCompatActivity {
     Bitmap bitmap;
     DatePickerDialog dpd;
     Calendar c;
+    LocationManager locationManager;
 
     ArrayList<String> list=new ArrayList<>();
     ArrayList<String> catidlist=new ArrayList<>();
@@ -66,7 +78,8 @@ public class addproduct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addproduct);
-
+        CheckPermission();
+        progressDialog = new ProgressDialog(this);
         // Edittext findby id
         titleEdit=findViewById(R.id.title);
         descriptionEdit=findViewById(R.id.description);
@@ -74,7 +87,7 @@ public class addproduct extends AppCompatActivity {
         amountEdit=findViewById(R.id.amount);
         unionEdit=findViewById(R.id.union);
         upzilaEdit=findViewById(R.id.upzila);
-
+        userid=SharedPrefManager.getInstance(getApplicationContext()).getUserID();
         spinner = (Spinner) findViewById(R.id.categorylist);
         getCatogories();
         choosebtn=(Button)findViewById(R.id.chosebtn);
@@ -180,6 +193,7 @@ public class addproduct extends AppCompatActivity {
             public void onClick(View view) {
                 addProductDataCollect();
             }
+
         });
 
 
@@ -195,22 +209,27 @@ public class addproduct extends AppCompatActivity {
 
         division=actv.getText().toString();
         district=actv2.getText().toString();
+        if(longi!=0 && lati!=0) {
 
-        addProduct();
-
+            addProduct();
+        }
+        else Toast.makeText(getApplicationContext(), "Please enable GPS", Toast.LENGTH_LONG).show();
     }
 
 
     private void addProduct()
     {
+        progressDialog.setMessage("Adding product...");
+        progressDialog.show();
         String urlString=Api.BASE_URL+"add_insert";
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 urlString,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        progressDialog.dismiss();
                         System.out.println(response+"k");
-                        Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"Product added successfully", Toast.LENGTH_LONG).show();
 
 
 
@@ -225,7 +244,7 @@ public class addproduct extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("sellerid", "1");
+                params.put("sellerid", userid);
                 params.put("title", title);
                 params.put("description", description);
                 params.put("division", division);
@@ -237,6 +256,8 @@ public class addproduct extends AppCompatActivity {
                 params.put("catid", selectedcatId);
                 params.put("unit_cost", unitCost);
                 params.put("amount", totalAmount);
+                params.put("latitude",String.valueOf(lati));
+                params.put("longitude",String.valueOf(longi));
                 params.put("image", imageToString(bitmap));
                 return params;
             }
@@ -351,4 +372,55 @@ public class addproduct extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public void onLocationChanged(Location location) {
+
+        longi =location.getLongitude();
+        lati = location.getLatitude();
+
+
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getLocation();
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        locationManager.removeUpdates(this);
+    }
+
+    @Override
+    public void onStatusChanged(String s, int i, Bundle bundle) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String s) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String s) {
+        Toast.makeText(addproduct.this, "Please Enable GPS", Toast.LENGTH_SHORT).show();
+    }
+
+    public void CheckPermission() {
+        if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION}, 101);
+        }
+    }
+
+    public void getLocation() {
+        try {
+            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 5, this);
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -53,7 +53,31 @@ public class MainActivity extends AppCompatActivity {
         editText_mobnum=(EditText) findViewById(R.id.enter_phone);
         editText_password=(EditText) findViewById(R.id.enter_pass);
 
+        passwordtoogle=(TextView)findViewById(R.id.passwordtextview);
+        passwordtoogle.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(setPtype==1){
+                    setPtype=0;
+                    editText_password.setTransformationMethod(null);
+                    if(editText_password.getText().length()>0){
+                        editText_password.setSelection(editText_password.getText().length());
 
+                    }
+                    passwordtoogle.setBackgroundResource(R.drawable.ic_panorama_fish_eye_black_24dp);
+                }
+                else{
+                    setPtype=1;
+                    editText_password.setTransformationMethod(new PasswordTransformationMethod());
+                    if(editText_password.getText().length()>0){
+                        editText_password.setSelection(editText_password.getText().length());
+
+                    }
+                    passwordtoogle.setBackgroundResource(R.drawable.ic_remove_red_eye_black_24dp);
+                }
+
+            }
+        });
         nextActivity=(Button) findViewById(R.id.login_button);
         nextActivity.setOnClickListener(new OnClickListener() {
             @Override
@@ -83,31 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        passwordtoogle=(TextView)findViewById(R.id.passwordtextview);
-        passwordtoogle.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(setPtype==1){
-                    setPtype=0;
-                    editText_password.setTransformationMethod(null);
-                    if(editText_password.getText().length()>0){
-                        editText_password.setSelection(editText_password.getText().length());
 
-                    }
-                    passwordtoogle.setBackgroundResource(R.drawable.ic_panorama_fish_eye_black_24dp);
-                        }
-                else{
-                    setPtype=1;
-                    editText_password.setTransformationMethod(new PasswordTransformationMethod());
-                    if(editText_password.getText().length()>0){
-                        editText_password.setSelection(editText_password.getText().length());
-
-                    }
-                    passwordtoogle.setBackgroundResource(R.drawable.ic_remove_red_eye_black_24dp);
-                }
-
-            }
-        });
         register=(Button)findViewById(R.id.register_button);
         register.setOnClickListener(new OnClickListener() {
             @Override
@@ -216,7 +216,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void openHomeActivity(){
 
-        Intent intent=new Intent(this, Home.class);
+        //Intent intent=new Intent(this, Home.class);
+        Intent intent=new Intent(this, Userhome.class);
+
         startActivity(intent);
     }
 

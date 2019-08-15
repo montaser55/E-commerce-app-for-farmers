@@ -101,7 +101,10 @@ public class FruitFragment extends Fragment {
                         "ddd",
                         "fdf",
                         "fdfd",
-                        R.drawable.userpic));
+                        R.drawable.userpic,
+                        1,
+                        1
+                ));
 
 
 

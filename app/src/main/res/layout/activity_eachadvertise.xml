@@ -174,8 +174,24 @@
             android:padding="5dp"
             android:text="TextView" />
     </LinearLayout>
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/activity_vertical_margin"
+    android:gravity="center"
+    android:layout_marginBottom="@dimen/activity_vertical_margin"
+>
 
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/button_rounded"
+        android:text="Add to cart"
+        android:id="@+id/addcartbtn"
+        android:layout_marginBottom="20dp"
 
-
+         />
+</LinearLayout>
 </LinearLayout>
 </ScrollView>

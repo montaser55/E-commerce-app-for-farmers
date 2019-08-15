@@ -16,8 +16,9 @@ public class Product implements Serializable {
     private String availableDate;
     private String expiryDate;
     private int image;
+    private double latitude,longitude;
 
-    public Product(String id, String title, float unitcost, float amount, String description, String sellerid, String division, String district, String upazila, String unionloc, String availableDate, String expiryDate, int image) {
+    public Product(String id, String title, float unitcost, float amount, String description, String sellerid, String division, String district, String upazila, String unionloc, String availableDate, String expiryDate, int image, double latitude, double longitude) {
         this.id = id;
         this.title = title;
         this.unitcost = unitcost;
@@ -31,6 +32,8 @@ public class Product implements Serializable {
         this.availableDate = availableDate;
         this.expiryDate = expiryDate;
         this.image = image;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public String getId() {
@@ -135,5 +138,21 @@ public class Product implements Serializable {
 
     public void setImage(int image) {
         this.image = image;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 }

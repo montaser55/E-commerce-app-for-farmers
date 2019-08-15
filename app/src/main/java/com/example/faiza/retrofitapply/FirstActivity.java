@@ -54,7 +54,9 @@ public class FirstActivity extends AppCompatActivity {
         agrotravel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openLocationActivity();
+               //openFinalCartActivity();
+                openAgrowTravelActivity();
+              //  openNotificationActivity();
             }
         });
     }
@@ -96,6 +98,21 @@ public class FirstActivity extends AppCompatActivity {
     }
     public void openLocationActivity(){
         Intent intent=new Intent(this, CurrentLocationActivity.class);
+        startActivity(intent);
+    }
+
+    public void openFinalCartActivity(){
+        Intent intent=new Intent(this, finalCart.class);
+        startActivity(intent);
+    }
+
+    public void openNotificationActivity(){
+        Intent intent=new Intent(this, Notification.class);
+        startActivity(intent);
+    }
+    public void openAgrowTravelActivity(){
+
+        Intent intent=new Intent(this, Agrotravel.class);
         startActivity(intent);
     }
 }

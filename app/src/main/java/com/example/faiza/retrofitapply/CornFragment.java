@@ -96,7 +96,10 @@ public class CornFragment extends Fragment {
                         "ddd",
                         "fdf",
                         "fdfd",
-                        R.drawable.userpic));
+                        R.drawable.userpic,
+                        1,
+                        0
+                        ));
 
 
 

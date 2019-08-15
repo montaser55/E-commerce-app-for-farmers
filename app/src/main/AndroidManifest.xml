@@ -5,7 +5,7 @@
     <uses-permission
         android:name="android.permission.ACCESS_COARSE_LOCATION"
         android:maxSdkVersion="22" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -16,7 +16,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".phnnumchange"></activity>
+        <activity android:name=".Agrotravel"></activity>
+        <activity android:name=".Userhome" />
+        <activity
+            android:name=".Userwindow"
+            android:label="Agrow"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".singleCart" />
+        <activity android:name=".finalCart" />
+        <activity android:name=".Notification" />
+        <activity android:name=".addtocart" />
+        <activity android:name=".phnnumchange" />
         <activity android:name=".passwordChange" />
         <activity
             android:name=".navigationtab"
@@ -24,9 +34,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".search2" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Notification" />
         <activity android:name=".eachadvertise" />
         <activity android:name=".showproduct" />
+        <activity android:name=".CurrentLocationActivity" />
         <activity
             android:name=".UserActivity"
             android:theme="@style/AppTheme.NoActionBar" />

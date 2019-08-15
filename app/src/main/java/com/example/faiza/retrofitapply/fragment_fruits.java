@@ -41,7 +41,7 @@ public class fragment_fruits extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+/*
         //initializing the productlist
         productList = new ArrayList<>();
 
@@ -63,7 +63,9 @@ public class fragment_fruits extends Fragment {
                         "ddd",
                         "fdf",
                         "fdfd",
-                       1));
+                       1,
+                        1,
+                        1));
         productList.add(
                 new Product(
                         "1",
@@ -78,6 +80,8 @@ public class fragment_fruits extends Fragment {
                         "ddd",
                         "fdf",
                         "fdfd",
+                        1,
+                        1,
                         1));
 
 
@@ -94,7 +98,9 @@ public class fragment_fruits extends Fragment {
         recyclerView.setAdapter(adapter);
 
 
-        return view;
+        return view;*/
+        return inflater.inflate(R.layout.fragment_fragment_fruits, container, false);
+
     }
 
 /*

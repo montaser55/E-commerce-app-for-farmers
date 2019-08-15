@@ -77,7 +77,10 @@ public class showproduct extends AppCompatActivity {
                                                 jsonObject.getString("unionloc"),
                                                 jsonObject.getString("available_date"),
                                                 jsonObject.getString("expiry_date"),
-                                                R.drawable.userpic));
+                                                R.drawable.userpic,
+                                                jsonObject.getDouble("latitude"),
+                                                jsonObject.getDouble("longitude")
+                                        ));
                             }
 
                             ProductAdapter adapter = new ProductAdapter(showproduct.this, productList);
