@@ -26,10 +26,10 @@ import java.util.Map;
 
 
 public class Signup extends AppCompatActivity {
-    private String fullname,mobnum,password,division,interest,gender;
+    private String fullname,mobnum,password,division,interest,gender,description;
     private ProgressDialog progressDialog;
 
-    private EditText edittext_fullname,editText_mobnum,editText_password,editText_gender;
+    private EditText edittext_fullname,editText_mobnum,editText_password,editText_description;
     private Spinner spinner_division,spinner_interest;
     private RadioGroup radioGroup;
     private RadioButton radioButton;
@@ -45,6 +45,7 @@ public class Signup extends AppCompatActivity {
         edittext_fullname=(EditText) findViewById(R.id.fullname_input);
         editText_mobnum=(EditText) findViewById(R.id.mobnum_input);
         editText_password=(EditText) findViewById(R.id.password_input);
+        editText_description=(EditText) findViewById(R.id.description_input);
         radioGroup =(RadioGroup) findViewById(R.id.radio);
 
         registerButton=(Button) findViewById(R.id.register_button);
@@ -82,7 +83,7 @@ public class Signup extends AppCompatActivity {
 
         mobnum=editText_mobnum.getText().toString();
         password=editText_password.getText().toString();
-
+        description=editText_description.getText().toString();
         progressDialog.setMessage("Registering user...");
         progressDialog.show();
         System.out.println(mobnum+" "+password);
@@ -126,6 +127,7 @@ public class Signup extends AppCompatActivity {
                 params.put("password", password);
                 params.put("mobileno", mobnum);
                 params.put("gender", gender);
+                params.put("description", description);
                 return params;
             }
         };

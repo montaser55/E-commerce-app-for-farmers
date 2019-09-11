@@ -54,7 +54,7 @@ public class FirstActivity extends AppCompatActivity {
         agrotravel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               //openFinalCartActivity();
+              // openFinalCartActivity();
                 openAgrowTravelActivity();
               //  openNotificationActivity();
             }
@@ -102,7 +102,7 @@ public class FirstActivity extends AppCompatActivity {
     }
 
     public void openFinalCartActivity(){
-        Intent intent=new Intent(this, finalCart.class);
+        Intent intent=new Intent(this, ReviewAll.class);
         startActivity(intent);
     }
 
@@ -112,7 +112,7 @@ public class FirstActivity extends AppCompatActivity {
     }
     public void openAgrowTravelActivity(){
 
-        Intent intent=new Intent(this, Agrotravel.class);
+        Intent intent=new Intent(this, AgroTravelall.class);
         startActivity(intent);
     }
 }

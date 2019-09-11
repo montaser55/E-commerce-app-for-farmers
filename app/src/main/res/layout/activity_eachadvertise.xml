@@ -192,6 +192,48 @@
         android:layout_marginBottom="20dp"
 
          />
+    <RatingBar
+        android:id="@+id/rating_rating_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:numStars="5"
+        android:stepSize=".5" />
+
+    <EditText
+        android:id="@+id/editTextreview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rating_rating_bar"
+
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:layout_centerHorizontal="true"
+        android:inputType="textMultiLine"
+        android:hint="Write a review"/>
+
+    <Button
+        android:id="@+id/submit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextreview"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="9dp"
+        android:text="Submit"
+        android:background="@drawable/button_rounded"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        android:id="@+id/View_Reviews_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/submit_button"
+        android:layout_centerHorizontal="true"
+        android:text="Reviews"
+        android:background="@drawable/button_rounded"
+        android:layout_marginBottom="20dp"/>
 </LinearLayout>
 </LinearLayout>
 </ScrollView>

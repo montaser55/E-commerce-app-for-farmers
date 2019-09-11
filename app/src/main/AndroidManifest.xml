@@ -16,7 +16,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Agrotravel"></activity>
+        <activity android:name=".AgroTravelall"></activity>
+        <activity android:name=".ReviewAll" />
+        <activity android:name=".Customer_reviews" />
+        <activity android:name=".rating" />
+
         <activity android:name=".Userhome" />
         <activity
             android:name=".Userwindow"
