@@ -49,7 +49,7 @@ public class Notification extends AppCompatActivity {
 
 
     private void getNotifications(){
-        String urlString=Api.BASE_URL+"search_notification";
+        String urlString=Api.BASE_URL+"search_notification_seller";
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 urlString,
                 new Response.Listener<String>() {
@@ -66,8 +66,7 @@ public class Notification extends AppCompatActivity {
                                         new singleNotification(
                                                 jsonObject.getString("name"),
                                                 jsonObject.getString("adid"),
-                                                jsonObject.getString("division"),
-                                                jsonObject.getString("district"),
+                                                jsonObject.getString("orderfrom"),
                                                 jsonObject.getString("amount"),
                                                 jsonObject.getString("cost")));
                             }
